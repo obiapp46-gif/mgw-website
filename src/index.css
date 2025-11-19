@@ -1,0 +1,134 @@
+/* ============================================
+   GLOBAL MGW PERFORMANCE THEME (NO TAILWIND)
+   ============================================ */
+
+/* Theme variables */
+:root {
+  --bg-dark: #05070a;
+  --bg-card: #101218;
+  --text-main: #ffffff;
+  --text-sub: #b4b4b4;
+  --obi-blue: #2196f3;
+  --obi-blue-glow: rgba(33, 150, 243, 0.5);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-main);
+  font-family: system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout container */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* NAVBAR */
+nav {
+  width: 100%;
+  padding: 18px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-dark);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  margin-left: 22px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--obi-blue);
+}
+
+/* HERO */
+.hero-title {
+  font-size: 46px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: var(--text-sub);
+  max-width: 600px;
+  line-height: 1.5;
+  margin-bottom: 26px;
+}
+
+.hero-buttons button {
+  padding: 10px 18px;
+  margin-right: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--obi-blue);
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.hero-buttons button:hover {
+  background: var(--obi-blue);
+  border-color: var(--obi-blue);
+}
+
+/* GRID feature cards */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+  transition: 0.25s;
+}
+
+.feature-card:hover {
+  box-shadow: 0 0 25px var(--obi-blue-glow);
+}
+
+.feature-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.feature-desc {
+  font-size: 14px;
+  color: var(--text-sub);
+}
+
+/* Placeholder mockups */
+.mock-img {
+  width: 260px;
+  border-radius: 22px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+.mock-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
