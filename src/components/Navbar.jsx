@@ -9,7 +9,7 @@ export default function Navbar() {
 
       <div>
         <Link to="/features">Features</Link>
-        <Link href="/dlc">DLC Store</Link>
+        <Link to="/dlc">DLC Store</Link>
         <Link to="/download">Download</Link>
         <Link to="/support">Support</Link>
         <Link to="/castscan">CastScan</Link>
