@@ -8,11 +8,12 @@ export default function DLC() {
       {/* HERO SECTION */}
       <section className="dlc-hero">
         <div className="dlc-hero-left">
-          <img
-            src="/assets/obi_hologram_blue.png"
-            alt="Obi"
-            className="dlc-obi animate-float"
-          />
+         <img
+  src="/obi_hologram_blue.png"
+  alt="Obi"
+  className="dlc-obi animate-float"
+/>
+
         </div>
 
         <div className="dlc-hero-right">
