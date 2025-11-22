@@ -12,6 +12,8 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import CastScan from "./pages/CastScan";
 import PartsReference from "./pages/PartsReference";
+import DLC from "./pages/DLC";
+
 
 export default function App() {
   return (
@@ -25,6 +27,7 @@ export default function App() {
             <Route path="/features" element={<Features />} />
             <Route path="/download" element={<Download />} />
             <Route path="/support" element={<Support />} />
+            
 
             {/* Important legal pages */}
             <Route path="/privacy" element={<Privacy />} />
