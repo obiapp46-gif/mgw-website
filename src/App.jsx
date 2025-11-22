@@ -27,6 +27,8 @@ export default function App() {
             <Route path="/features" element={<Features />} />
             <Route path="/download" element={<Download />} />
             <Route path="/support" element={<Support />} />
+            <Route path="/dlc" element={<DLC />} />
+
             
 
             {/* Important legal pages */}
