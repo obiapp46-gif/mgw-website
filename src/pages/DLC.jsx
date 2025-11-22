@@ -33,7 +33,6 @@ export default function DLC() {
             </h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
               {[
                 "ENGINE PACKS",
                 "THEMES & UI PACKS",
@@ -47,17 +46,22 @@ export default function DLC() {
                   href={`#${label.toLowerCase().replace(/ & | /g, "-")}`}
                   className="group"
                 >
-                  <div className="bg-[rgba(20,30,40,0.45)] border border-[rgba(0,180,255,0.3)]
-                                  rounded-xl p-6 text-center transition-all duration-200 
-                                  hover:bg-[rgba(30,45,60,0.7)] hover:shadow-[0_0_20px_#27a8ff]
-                                  cursor-pointer backdrop-blur-md">
+                  <div
+                    className="
+                      bg-[rgba(20,30,40,0.45)]
+                      border border-[rgba(0,180,255,0.3)]
+                      rounded-xl p-6 text-center transition-all duration-200
+                      hover:bg-[rgba(30,45,60,0.7)]
+                      hover:shadow-[0_0_20px_#27a8ff]
+                      cursor-pointer backdrop-blur-md
+                    "
+                  >
                     <div className="text-lg font-semibold text-blue-100 tracking-wide">
                       {label}
                     </div>
                   </div>
                 </a>
               ))}
-
             </div>
           </div>
         </div>
@@ -88,4 +92,44 @@ export default function DLC() {
             ].map((pack, idx) => (
               <div
                 key={idx}
-                className="bg-[rgba(20,25,30,]()
+                className="
+                  bg-[rgba(20,25,30,0.5)]
+                  border border-[rgba(0,150,255,0.3)]
+                  p-6 rounded-xl backdrop-blur-md
+                  hover:shadow-[0_0_18px_#27a8ff]
+                  transition-all duration-200
+                "
+              >
+                <h3 className="text-xl font-semibold mb-2 text-blue-100">
+                  {pack.title}
+                </h3>
+                <p className="text-blue-200/70 text-sm leading-relaxed">{pack.desc}</p>
+                <div className="text-blue-400 text-xl font-bold my-4">
+                  {pack.price}
+                </div>
+
+                <button
+                  className="
+                    bg-[#27a8ff] text-[#03131e]
+                    px-4 py-2 rounded-lg font-semibold
+                    transition-all hover:bg-[#4ec3ff]
+                  "
+                >
+                  Buy & Download
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="mt-32 border-t border-[rgba(0,150,255,0.25)] py-10 text-center text-blue-200/60">
+          © 2025 MGW Performance Systems — Obi Vehicle Co-Pilot
+        </footer>
+      </div>
+
+      {/* FLOAT ANIMATION */}
+      {/* Move these to global CSS */}
+    </div>
+  );
+}
