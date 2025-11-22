@@ -13,7 +13,7 @@ export default function Navbar() {
         <Link to="/download">Download</Link>
         <Link to="/support">Support</Link>
         <Link to="/castscan">CastScan</Link>
-        <Link to="/parts">Parts Reference</Link>
+       
       </div>
     </nav>
   );
