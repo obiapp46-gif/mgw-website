@@ -1,38 +1,38 @@
 import React from "react";
+import "../App.css"; // ensure animations/styles load
 
 export default function DLC() {
   return (
-    <div className="min-h-screen bg-[#0b0d11] text-blue-100 relative overflow-hidden">
-      
-      {/* Background grid */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_#1b1e26,_#0b0d11_70%)] opacity-80"></div>
+    <div className="min-h-screen bg-gray-900 text-blue-100 relative overflow-hidden">
 
-      {/* Main container */}
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900 opacity-80 pointer-events-none"></div>
+
       <div className="relative z-10 px-6 md:px-16 py-20">
         
-        {/* HERO SECTION */}
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
+        {/* HERO */}
+        <div className="flex flex-col md:flex-row items-center gap-12">
 
-          {/* HOLOGRAM OBI */}
+          {/* OBI */}
           <div className="flex-shrink-0">
-            <div className="animate-float drop-shadow-[0_0_25px_#27a8ff]">
+            <div className="animate-float drop-shadow-xl">
               <img
                 src="/assets/obi_hologram_blue.png"
-                alt="Obi Hologram"
-                width="340"
-                height="340"
-                className="opacity-95"
+                alt="Obi"
+                className="w-[300px] md:w-[340px] opacity-95"
               />
             </div>
           </div>
 
-          {/* MAIN MENU STYLE TILES */}
+          {/* Tiles */}
           <div className="flex-1">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-wider mb-8 text-blue-200">
+            
+            <h1 className="text-4xl md:text-5xl font-bold mb-8 text-blue-200 tracking-wide">
               OBI DLC MARKETPLACE
             </h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
               {[
                 "ENGINE PACKS",
                 "THEMES & UI PACKS",
@@ -41,95 +41,76 @@ export default function DLC() {
                 "WORKSHOP ADD-ONS",
                 "BUILD BLUEPRINTS",
               ].map((label, idx) => (
-                <a
+                <div
                   key={idx}
-                  href={`#${label.toLowerCase().replace(/ & | /g, "-")}`}
-                  className="group"
+                  className="bg-gray-800/40 border border-blue-500/20 rounded-xl p-6 
+                             hover:bg-gray-700/40 hover:shadow-blue-500/30 hover:shadow-lg 
+                             backdrop-blur-md cursor-pointer transition-all"
                 >
-                  <div
-                    className="
-                      bg-[rgba(20,30,40,0.45)]
-                      border border-[rgba(0,180,255,0.3)]
-                      rounded-xl p-6 text-center transition-all duration-200
-                      hover:bg-[rgba(30,45,60,0.7)]
-                      hover:shadow-[0_0_20px_#27a8ff]
-                      cursor-pointer backdrop-blur-md
-                    "
-                  >
-                    <div className="text-lg font-semibold text-blue-100 tracking-wide">
-                      {label}
-                    </div>
-                  </div>
-                </a>
+                  <p className="text-lg text-blue-100 font-semibold text-center tracking-wide">
+                    {label}
+                  </p>
+                </div>
               ))}
+
             </div>
           </div>
         </div>
 
-        {/* SECTION: ENGINE PACKS */}
+        {/* ENGINE PACKS SECTION */}
         <section id="engine-packs" className="mt-24">
-          <h2 className="text-3xl font-bold mb-8 text-blue-200">
-            Engine Packs
-          </h2>
+          
+          <h2 className="text-3xl font-bold text-blue-200 mb-8">Engine Packs</h2>
 
           <div className="grid md:grid-cols-3 gap-8">
+
             {[
               {
                 title: "Subaru EJ205 / EJ207 Pack",
-                desc: "OEM Torque Specs, Diagnostics, Turbo Data, Maintenance, Fault Trees, Diagrams",
+                desc: "OEM Torque Specs, Diagnostics, Turbo Data, Fault Trees, Diagrams",
                 price: "£4.99",
               },
               {
                 title: "Toyota 2JZ-GTE Pack",
-                desc: "Boost Logic, Rebuild Notes, Timing, Sensors, Fault Patterns, Full Specs",
+                desc: "Boost Logic, Rebuild Notes, Timing, Sensors, Fault Patterns, Specs",
                 price: "£4.99",
               },
               {
                 title: "Nissan RB26DETT Pack",
-                desc: "Diagnostics, Oil System Notes, Timing Setup, Parts Reference, OEM-style Data",
+                desc: "Diagnostics, Oil Notes, Timing Setup, Parts Reference, OEM-style Data",
                 price: "£4.99",
               },
             ].map((pack, idx) => (
               <div
                 key={idx}
-                className="
-                  bg-[rgba(20,25,30,0.5)]
-                  border border-[rgba(0,150,255,0.3)]
-                  p-6 rounded-xl backdrop-blur-md
-                  hover:shadow-[0_0_18px_#27a8ff]
-                  transition-all duration-200
-                "
+                className="bg-gray-800/50 border border-blue-600/20 rounded-xl p-6 
+                           hover:shadow-lg hover:shadow-blue-500/30 transition-all backdrop-blur-md"
               >
-                <h3 className="text-xl font-semibold mb-2 text-blue-100">
+                <h3 className="text-xl font-semibold text-blue-100 mb-2">
                   {pack.title}
                 </h3>
-                <p className="text-blue-200/70 text-sm leading-relaxed">{pack.desc}</p>
-                <div className="text-blue-400 text-xl font-bold my-4">
-                  {pack.price}
-                </div>
 
-                <button
-                  className="
-                    bg-[#27a8ff] text-[#03131e]
-                    px-4 py-2 rounded-lg font-semibold
-                    transition-all hover:bg-[#4ec3ff]
-                  "
-                >
+                <p className="text-blue-200/70 text-sm leading-relaxed">
+                  {pack.desc}
+                </p>
+
+                <div className="text-blue-400 text-xl font-bold my-4">{pack.price}</div>
+
+                <button className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-semibold px-4 py-2 rounded-lg">
                   Buy & Download
                 </button>
               </div>
             ))}
+
           </div>
         </section>
 
         {/* FOOTER */}
-        <footer className="mt-32 border-t border-[rgba(0,150,255,0.25)] py-10 text-center text-blue-200/60">
+        <footer className="mt-24 text-center text-blue-300/60 border-t border-blue-500/20 py-10">
           © 2025 MGW Performance Systems — Obi Vehicle Co-Pilot
         </footer>
-      </div>
 
-      {/* FLOAT ANIMATION */}
-      {/* Move these to global CSS */}
+      </div>
     </div>
   );
 }
