@@ -1,12 +1,11 @@
 import React from "react";
 
-
-export default function DLCPage() {
+export default function DLC() {
   return (
     <div className="min-h-screen bg-[#0b0d11] text-blue-100 relative overflow-hidden">
       
       {/* Background grid */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_#1b1e26,_#0b0d11_70%)] opacity-80" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_#1b1e26,_#0b0d11_70%)] opacity-80"></div>
 
       {/* Main container */}
       <div className="relative z-10 px-6 md:px-16 py-20">
@@ -17,11 +16,11 @@ export default function DLCPage() {
           {/* HOLOGRAM OBI */}
           <div className="flex-shrink-0">
             <div className="animate-float drop-shadow-[0_0_25px_#27a8ff]">
-              <Image
+              <img
                 src="/assets/obi_hologram_blue.png"
                 alt="Obi Hologram"
-                width={340}
-                height={340}
+                width="340"
+                height="340"
                 className="opacity-95"
               />
             </div>
@@ -48,7 +47,7 @@ export default function DLCPage() {
                   href={`#${label.toLowerCase().replace(/ & | /g, "-")}`}
                   className="group"
                 >
-                  <div className="bg-[rgba(20,30,40,0.45)] border border-[rgba(0,180,255,0.3)] 
+                  <div className="bg-[rgba(20,30,40,0.45)] border border-[rgba(0,180,255,0.3)]
                                   rounded-xl p-6 text-center transition-all duration-200 
                                   hover:bg-[rgba(30,45,60,0.7)] hover:shadow-[0_0_20px_#27a8ff]
                                   cursor-pointer backdrop-blur-md">
@@ -70,8 +69,6 @@ export default function DLCPage() {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
-
-            {/* Card Template */}
             {[
               {
                 title: "Subaru EJ205 / EJ207 Pack",
@@ -91,42 +88,4 @@ export default function DLCPage() {
             ].map((pack, idx) => (
               <div
                 key={idx}
-                className="bg-[rgba(20,25,30,0.5)] border border-[rgba(0,150,255,0.3)]
-                           p-6 rounded-xl backdrop-blur-md hover:shadow-[0_0_18px_#27a8ff]
-                           transition-all duration-200"
-              >
-                <h3 className="text-xl font-semibold mb-2 text-blue-100">{pack.title}</h3>
-                <p className="text-blue-200/70 text-sm leading-relaxed">{pack.desc}</p>
-                <div className="text-blue-400 text-xl font-bold my-4">{pack.price}</div>
-
-                <button className="bg-[#27a8ff] text-[#03131e] px-4 py-2 rounded-lg 
-                                   font-semibold transition-all hover:bg-[#4ec3ff]">
-                  Buy & Download
-                </button>
-              </div>
-            ))}
-
-          </div>
-        </section>
-
-        {/* FOOTER */}
-        <footer className="mt-32 border-t border-[rgba(0,150,255,0.25)] py-10 text-center text-blue-200/60">
-          © 2025 MGW Performance Systems — Obi Vehicle Co-Pilot
-        </footer>
-
-      </div>
-
-      {/* FLOAT ANIMATION */}
-      <style jsx global>{`
-        @keyframes float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-          100% { transform: translateY(0px); }
-        }
-        .animate-float {
-          animation: float 4s ease-in-out infinite;
-        }
-      `}</style>
-    </div>
-  );
-}
+                className="bg-[rgba(20,25,30,]()
