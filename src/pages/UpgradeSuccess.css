@@ -1,0 +1,45 @@
+.success-container {
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+}
+
+.success-card {
+  margin: 30px auto;
+  padding: 30px;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.success-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.success-card ul li {
+  margin: 8px 0;
+  opacity: 0.85;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: #007bff;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.back-btn:hover {
+  background: #0a5fdc;
+}
+
+.fine-print {
+  opacity: 0.6;
+  margin-top: 15px;
+}

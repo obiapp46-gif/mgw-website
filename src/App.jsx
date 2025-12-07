@@ -13,6 +13,8 @@ import Terms from "./pages/Terms";
 import CastScan from "./pages/CastScan";
 import PartsReference from "./pages/PartsReference";
 import DLC from "./pages/DLC";
+import UpgradeSuccess from "./pages/UpgradeSuccess";
+
 
 // ⭐ NEW — Upgrade page
 import Upgrade from "./pages/Upgrade";
@@ -30,6 +32,8 @@ export default function App() {
             <Route path="/download" element={<Download />} />
             <Route path="/support" element={<Support />} />
             <Route path="/dlc" element={<DLC />} />
+            <Route path="/upgrade-success" element={<UpgradeSuccess />} />
+
 
             {/* ⭐ NEW UPGRADE PAGE */}
             <Route path="/upgrade" element={<Upgrade />} />
