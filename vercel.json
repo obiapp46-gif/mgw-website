@@ -1,5 +1,11 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ]
+    {
+      "source": "/upgrade",
+      "destination": "/upgrade.html"
+    }
+  ],
+  "staticFiles": {
+    "public": true
+  }
 }
