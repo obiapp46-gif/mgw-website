@@ -9,6 +9,7 @@ export default function Navbar() {
 
       <div>
         <Link to="/features">Features</Link>
+        <li><Link to="/upgrade">Upgrade</Link></li>
         <Link to="/dlc">DLC Store</Link>
         <Link to="/download">Download</Link>
         <Link to="/support">Support</Link>
