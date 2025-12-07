@@ -14,6 +14,8 @@ import CastScan from "./pages/CastScan";
 import PartsReference from "./pages/PartsReference";
 import DLC from "./pages/DLC";
 
+// ⭐ NEW — Upgrade page
+import Upgrade from "./pages/Upgrade";
 
 export default function App() {
   return (
@@ -29,13 +31,14 @@ export default function App() {
             <Route path="/support" element={<Support />} />
             <Route path="/dlc" element={<DLC />} />
 
-            
+            {/* ⭐ NEW UPGRADE PAGE */}
+            <Route path="/upgrade" element={<Upgrade />} />
 
             {/* Important legal pages */}
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
 
-            {/* New pages */}
+            {/* Extra pages */}
             <Route path="/castscan" element={<CastScan />} />
             <Route path="/parts-reference" element={<PartsReference />} />
           </Routes>
