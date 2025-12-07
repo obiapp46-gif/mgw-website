@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade to Obi Pro</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+    }
+
+    .wrapper {
+      max-width: 450px;
+      margin: auto;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .logo {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #03a9f4;
+      margin-bottom: 14px;
+    }
+
+    p {
+      opacity: 0.8;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 25px;
+      box-shadow: 0 0 12px rgba(3, 169, 244, 0.3);
+    }
+
+    .features {
+      text-align: left;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .features li {
+      padding: 6px 0;
+      list-style: none;
+      font-size: 15px;
+    }
+
+    .features li::before {
+      content: "• ";
+      color: #03a9f4;
+    }
+
+    .price {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #03a9f4;
+    }
+
+    .upgrade-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      text-align: center;
+      font-size: 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      background: #03a9f4;
+      color: black;
+      font-weight: bold;
+      box-shadow: 0 0 10px #03a9f4;
+      margin-top: 10px;
+    }
+
+    .upgrade-btn:hover {
+      background: #29b6f6;
+    }
+
+    .note {
+      font-size: 14px;
+      opacity: 0.5;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <img src="/obi-logo.png" width="90" class="logo" />
+
+    <h1>Upgrade to Obi Pro</h1>
+    <p>Your daily fuel is empty — unlock **unlimited messages**, advanced features, and full engine-pack support.</p>
+
+    <div class="card">
+      <div class="price">Only £9.99 / month</div>
+
+      <ul class="features">
+        <li>Unlimited Obi messages</li>
+        <li>Unlock all engine packs</li>
+        <li>Advanced diagnostics mode</li>
+        <li>Parts & repair insights</li>
+        <li>Priority cloud processing</li>
+      </ul>
+
+      <a class="upgrade-btn" href="/checkout/pro">
+        Upgrade Now
+      </a>
+
+      <div class="note">Cancel anytime. Secure payment via Stripe.</div>
+    </div>
+  </div>
+</body>
+</html>
