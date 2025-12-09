@@ -23,21 +23,28 @@ export default async function handler(req, res) {
     console.log("🔧 Checkout → Engine:", engine, "Device:", deviceId);
 
     // -------------------------------
-    // Price map — replace when you have real price IDs
-    // -------------------------------
-    const priceMap = {
-      ej207: "price_xxxxxx",
-      fa20dit_wrx: "price_xxxxxx",
-      toyota_2jzgte: "price_xxxxxx",
-      nissan_rb26dett: "price_xxxxxx",
-      honda_b16a2: "price_xxxxxx",
-      honda_b18c: "price_xxxxxx"
-    };
+// Price map — replace when you have real price IDs
+// -------------------------------
+const priceMap = {
+  ej207: "price_1ScVjyCGXU4xfTuKr41aXO7O",
+  fa20dit_wrx: "price_xxxxxx",
+  toyota_2jzgte: "price_xxxxxx",
+  nissan_rb26dett: "price_xxxxxx",
+  honda_b16a2: "price_xxxxxx",
+  honda_b18c: "price_xxxxxx"
+};
 
-    if (!priceMap[engine]) {
-      console.error("❌ Invalid engine:", engine);
-      return res.status(400).json({ error: "Invalid engine code" });
-    }
+// -------------------------------
+// Reject packs without valid price IDs
+// -------------------------------
+if (
+  !priceMap[engine] || 
+  priceMap[engine].startsWith("price_x")
+) {
+  console.error("❌ Engine pack not available:", engine);
+  return res.status(400).json({ error: "Engine pack not available yet." });
+}
+
 
     // -------------------------------
     // Create checkout session
