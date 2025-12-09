@@ -1,5 +1,5 @@
-// /pages/api/checkout/[engine].js
-// Creates a Stripe checkout session for engine pack DLC
+// /api/checkout/[engine].js
+// Stripe Checkout — Vercel Serverless Function (Vite + React)
 
 import Stripe from "stripe";
 import cookie from "cookie";
@@ -7,15 +7,24 @@ import cookie from "cookie";
 export default async function handler(req, res) {
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-    const { engine } = req.query;
 
-    // Parse cookies from request header
+    // -------------------------------
+    // Extract engine from URL manually
+    // -------------------------------
+    const url = new URL(req.url, `https://${req.headers.host}`);
+    const engine = url.pathname.split("/").pop();  // gets [engine]
+
+    // -------------------------------
+    // Read device_id cookie
+    // -------------------------------
     const cookies = cookie.parse(req.headers.cookie || "");
     const deviceId = cookies.device_id || "unknown_device";
 
-    console.log("🔧 Checkout for:", engine, "Device:", deviceId);
+    console.log("🔧 Checkout → Engine:", engine, "Device:", deviceId);
 
-    // Map engine codes to Stripe Price IDs (placeholder)
+    // -------------------------------
+    // Price map — replace when you have real price IDs
+    // -------------------------------
     const priceMap = {
       ej207: "price_xxxxxx",
       fa20dit_wrx: "price_xxxxxx",
@@ -26,11 +35,16 @@ export default async function handler(req, res) {
     };
 
     if (!priceMap[engine]) {
+      console.error("❌ Invalid engine:", engine);
       return res.status(400).json({ error: "Invalid engine code" });
     }
 
+    // -------------------------------
+    // Create checkout session
+    // -------------------------------
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+
       success_url: `${req.headers.origin}/engine-packs?success=1&engine=${engine}`,
       cancel_url: `${req.headers.origin}/engine-packs?cancel=1`,
 
@@ -48,7 +62,11 @@ export default async function handler(req, res) {
       }
     });
 
-    return res.redirect(303, session.url);
+    // -------------------------------
+    // Redirect to Stripe Checkout
+    // -------------------------------
+    return res.writeHead(303, { Location: session.url }).end();
+
   } catch (err) {
     console.error("❌ Stripe Checkout Error:", err);
     return res.status(500).json({ error: "Checkout failed" });
