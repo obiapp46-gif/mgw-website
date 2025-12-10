@@ -1,138 +1,415 @@
-/* Page wrapper */
-.page-wrapper {
-  width: 100%;
-  max-width: 1100px;
-  margin: auto;
-  padding: 2rem;
-  color: var(--text-main);
+/* ============================================================
+   MGW / OBI V2 — COMPLETE HOLOGRAM THEME (APP.CSS OVERWRITE)
+   Mobile-first, high-performance, game-style UI
+   ------------------------------------------------------------
+   Features:
+   • Neon hologram borders
+   • Animated scanline + grid overlay
+   • Mobile burger menu slide panel
+   • Smooth hover/tap pulses
+   • Global responsive system
+   • Logo watermarks & accents
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   ROOT THEME VARIABLES
+------------------------------------------------------------- */
+:root {
+  --bg-dark: #05070a;
+  --bg-card: #0b0d12;
+  --bg-panel: #0f1117;
+
+  --text-main: #ffffff;
+  --text-sub: #b4b4b4;
+
+  --obi-red: #ff2e2e;
+  --obi-blue: #1aa3ff;
+  --obi-green: #2bff3e;
+
+  --holo-glow: rgba(0, 170, 255, 0.55);
+  --holo-outline: rgba(0, 170, 255, 0.25);
+  --holo-scan: rgba(0, 255, 255, 0.05);
+
+  --nav-height: 70px;
 }
 
-/* HERO SECTION */
+/* ------------------------------------------------------------
+   GLOBAL RESET
+------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ------------------------------------------------------------
+   GLOBAL HOLOGRAM BACKGROUND
+------------------------------------------------------------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 255, 0.015) 0px,
+      rgba(0, 255, 255, 0.015) 1px,
+      transparent 2px,
+      transparent 4px
+    );
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* ------------------------------------------------------------
+   SECTION CONTAINER
+------------------------------------------------------------- */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ------------------------------------------------------------
+   HOLOGRAM DIVIDER BAR
+------------------------------------------------------------- */
+.holo-divider {
+  width: 100%;
+  height: 3px;
+  margin: 40px 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--obi-blue),
+    var(--obi-green),
+    transparent
+  );
+  opacity: 0.35;
+}
+
+/* ------------------------------------------------------------
+   NAVBAR
+------------------------------------------------------------- */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background: rgba(5,7,10, 0.85);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 22px;
+  border-bottom: 1px solid var(--holo-outline);
+
+  z-index: 1000;
+}
+
+/* Logo */
+.nav-logo img {
+  width: 44px;
+  filter: drop-shadow(0 0 6px var(--holo-glow));
+  transition: 0.25s;
+}
+
+.nav-logo img:hover {
+  filter: drop-shadow(0 0 14px var(--holo-glow));
+}
+
+/* Desktop links */
+.nav-links {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: 0.2s;
+  position: relative;
+}
+
+/* Neon outline on hover */
+.nav-links a:hover {
+  color: var(--obi-blue);
+  box-shadow: 0 0 6px var(--holo-glow);
+}
+
+/* Active link hologram underline */
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: var(--obi-blue);
+  box-shadow: 0 0 10px var(--obi-blue);
+}
+
+/* ------------------------------------------------------------
+   MOBILE NAV
+------------------------------------------------------------- */
+.burger {
+  display: none;
+  width: 32px;
+  height: 22px;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.burger span {
+  height: 4px;
+  background: var(--obi-blue);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Slide-out mobile panel */
+.mobile-menu {
+  position: fixed;
+  top: var(--nav-height);
+  right: -100%;
+  width: 70%;
+  height: calc(100% - var(--nav-height));
+  background: var(--bg-panel);
+  border-left: 1px solid var(--holo-outline);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: 0.35s ease;
+  z-index: 999;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu a {
+  color: var(--text-main);
+  text-decoration: none;
+  padding: 12px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 6px;
+  transition: 0.25s;
+}
+
+.mobile-menu a:hover {
+  background: rgba(0,170,255,0.15);
+  box-shadow: 0 0 12px var(--holo-glow);
+}
+
+/* ------------------------------------------------------------
+   HERO SECTIONS
+------------------------------------------------------------- */
+.hero-title {
+  font-size: clamp(36px, 6vw, 48px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.hero-title::after {
+  content: "";
+  display: block;
+  width: 180px;
+  height: 3px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, var(--obi-blue), transparent);
+  opacity: 0.35;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: var(--text-sub);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 26px;
+}
+
+.hero-buttons button {
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--obi-blue);
+  background: rgba(0,0,0,0.3);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.hero-buttons button:hover {
+  background: var(--obi-blue);
+  color: black;
+  box-shadow: 0 0 12px var(--obi-blue);
+}
+
+/* Logo watermark */
+.section.hero::before {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: 20px;
+  width: 250px;
+  height: 250px;
+  background: url("/obiappicon2.png") no-repeat center/contain;
+  opacity: 0.05;
+  transform: rotate(-12deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ------------------------------------------------------------
+   FEATURE CARDS
+------------------------------------------------------------- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid var(--holo-outline);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--obi-blue);
+  box-shadow: 0 0 26px var(--holo-glow);
+}
+
+/* ------------------------------------------------------------
+   DLC PAGE STYLING
+------------------------------------------------------------- */
 .dlc-hero {
   display: flex;
-  flex-direction: row;
+  gap: 40px;
+  padding: 60px 20px;
   align-items: center;
-  gap: 3rem;
-  padding: 3rem 0;
-}
-
-.dlc-hero-left {
-  flex: 0 0 auto;
 }
 
 .dlc-obi {
-  width: 260px;
-  filter: drop-shadow(0 0 20px rgba(0, 190, 255, 0.4));
+  width: 180px;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px var(--obi-blue));
 }
 
-.dlc-hero-right {
-  flex: 1;
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .dlc-title {
-  font-size: 2.8rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  color: var(--accent);
+  font-size: 46px;
+  font-weight: 700;
+  text-shadow: 0 0 12px var(--holo-glow);
+  margin-bottom: 20px;
 }
 
-/* CATEGORY LIST */
 .dlc-category-list {
   display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .dlc-category {
-  border-left: 3px solid var(--accent);
-  padding-left: 0.8rem;
-  font-size: 1.1rem;
-  color: var(--text-main);
-  opacity: 0.85;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--holo-outline);
+  cursor: pointer;
+  transition: 0.25s;
 }
 
-/* SECTION */
+.dlc-category:hover {
+  border-color: var(--obi-blue);
+  background: rgba(0,170,255,0.15);
+  box-shadow: 0 0 12px var(--holo-glow);
+}
+
 .dlc-section {
-  margin-top: 4rem;
+  margin-top: 30px;
+  padding: 30px 0;
 }
 
 .dlc-section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: var(--accent);
-}
-
-/* CARD GRID */
-.dlc-card-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
-/* DLC CARD STYLE */
-.dlc-card {
-  background: var(--bg-dark);
-  border: 1px solid rgba(0, 180, 255, 0.2);
-  padding: 1.4rem;
-  border-radius: 10px;
-  transition: 0.3s ease;
-}
-
-.dlc-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-3px);
-  box-shadow: 0 0 15px rgba(0, 180, 255, 0.25);
-}
-
-.dlc-card-title {
-  font-size: 1.3rem;
+  font-size: 28px;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 12px var(--holo-glow);
 }
 
-.dlc-card-desc {
-  opacity: 0.75;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-.dlc-card-price {
-  margin: 0.8rem 0;
-  font-weight: 700;
-  color: var(--accent);
-}
-
-/* BUTTON */
-.dlc-button {
-  background: var(--accent);
-  color: #000;
-  padding: 0.5rem 1.1rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-}
-
-.dlc-button:hover {
-  background: #4ec9ff;
-}
-
-/* FOOTER */
-.dlc-footer {
-  margin-top: 5rem;
-  text-align: center;
-  font-size: 0.9rem;
+.dlc-coming-soon {
+  color: var(--text-sub);
   opacity: 0.7;
 }
 
-/* FLOAT ANIMATION */
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+/* ------------------------------------------------------------
+   FOOTER
+------------------------------------------------------------- */
+footer {
+  margin-top: 40px;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-sub);
+  font-size: 14px;
+  border-top: 1px solid var(--holo-outline);
+  background: rgba(255,255,255,0.02);
 }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
+footer img {
+  width: 32px;
+  opacity: 0.3;
+  margin-bottom: 6px;
+}
+
+/* ------------------------------------------------------------
+   MOBILE BREAKPOINTS
+------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .dlc-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 740px) {
+
+  .nav-links {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
 }
