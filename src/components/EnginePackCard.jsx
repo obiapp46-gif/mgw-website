@@ -5,23 +5,18 @@ export default function EnginePackCard({ pack }) {
   const [open, setOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  // Unique engine family theme classes
+  // Engine family colour theme
   const familyClass = `family-${pack.code.split("_")[0]}`;
 
   return (
     <>
       <div
-        className={`engine-pack-card holo-card ${familyClass}`}
+        className={`engine-pack-card holo-card clean-holo ${familyClass}`}
         onClick={() => setOpen(!open)}
       >
-        {/* Corner Accents */}
-        <span className="corner tl"></span>
-        <span className="corner tr"></span>
-        <span className="corner bl"></span>
-        <span className="corner br"></span>
 
         {/* IMAGE */}
-        <div className="engine-pack-image">
+        <div className="engine-pack-image clean-image-wrap">
           <img src={pack.image} alt={pack.title} />
         </div>
 
@@ -40,17 +35,18 @@ export default function EnginePackCard({ pack }) {
 
         {/* EXPANDED SECTION */}
         {open && (
-          <div className="engine-pack-expanded">
+          <div className="engine-pack-expanded fade-in">
             <h3>What’s Included</h3>
             <ul>
-              <li>OEM specifications & torque data</li>
-              <li>Fault detection patterns</li>
-              <li>ECU behaviour & learning logic</li>
-              <li>Turbo behaviour (if applicable)</li>
-              <li>Maintenance intervals</li>
+              <li>OEM Specifications & Torque Data</li>
+              <li>Fault Detection Patterns</li>
+              <li>ECU Behaviour & Learning Logic</li>
+              <li>Turbo Behaviour (If Applicable)</li>
+              <li>Maintenance Intervals & Insights</li>
             </ul>
 
             <div className="engine-pack-actions">
+
               {/* BUY / INCLUDED / COMING SOON */}
               {pack.free ? (
                 <span className="included-tag">Included in Obi Free Tier</span>
@@ -62,7 +58,6 @@ export default function EnginePackCard({ pack }) {
                 <span className="coming-soon">Coming Soon</span>
               )}
 
-              {/* VIEW DETAILS */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
