@@ -1,31 +1,86 @@
+import { useState } from "react";
+import EnginePackModal from "./EnginePackModal";
+
 export default function EnginePackCard({ pack }) {
+  const [open, setOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  // Unique engine family theme classes
+  const familyClass = `family-${pack.code.split("_")[0]}`;
+
   return (
-    <div className="bg-[#0d0d0d] border border-[#1d1d1d] rounded-xl p-4 shadow-lg hover:shadow-2xl hover:border-[#00aaff] transition-all duration-300">
-      <img
-        src={pack.image}
-        alt={pack.title}
-        className="rounded-lg w-full h-40 object-cover mb-4"
-      />
+    <>
+      <div
+        className={`engine-pack-card holo-card ${familyClass}`}
+        onClick={() => setOpen(!open)}
+      >
+        {/* Corner Accents */}
+        <span className="corner tl"></span>
+        <span className="corner tr"></span>
+        <span className="corner bl"></span>
+        <span className="corner br"></span>
 
-      <h2 className="text-xl font-bold text-white">{pack.title}</h2>
-      <span className="text-[#00ccff] text-sm">{pack.badge}</span>
+        {/* IMAGE */}
+        <div className="engine-pack-image">
+          <img src={pack.image} alt={pack.title} />
+        </div>
 
-      <p className="text-gray-400 text-sm mt-2">{pack.description}</p>
+        {/* HEADER */}
+        <div className="engine-pack-header">
+          <h2>{pack.title}</h2>
+          <span className="badge">{pack.badge}</span>
+        </div>
 
-      <div className="flex justify-between items-center mt-4">
-        <span className="text-[#00ccff] font-bold">{pack.price}</span>
+        <div className="price-row">
+          <span className="price">{pack.price}</span>
+        </div>
 
-        {pack.stripeUrl ? (
-          <a
-            href={pack.stripeUrl}
-            className="bg-[#00ccff] hover:bg-[#0099cc] text-black font-bold px-4 py-1 rounded-lg transition-all"
-          >
-            Buy Now
-          </a>
-        ) : (
-          <span className="text-green-400 font-semibold">Included</span>
+        {/* SHORT DESCRIPTION */}
+        <p className="engine-pack-short">{pack.description}</p>
+
+        {/* EXPANDED SECTION */}
+        {open && (
+          <div className="engine-pack-expanded">
+            <h3>What’s Included</h3>
+            <ul>
+              <li>OEM specifications & torque data</li>
+              <li>Fault detection patterns</li>
+              <li>ECU behaviour & learning logic</li>
+              <li>Turbo behaviour (if applicable)</li>
+              <li>Maintenance intervals</li>
+            </ul>
+
+            <div className="engine-pack-actions">
+              {/* BUY / INCLUDED / COMING SOON */}
+              {pack.free ? (
+                <span className="included-tag">Included in Obi Free Tier</span>
+              ) : pack.available ? (
+                <a href={pack.stripeUrl} className="buy-btn">
+                  Buy Now
+                </a>
+              ) : (
+                <span className="coming-soon">Coming Soon</span>
+              )}
+
+              {/* VIEW DETAILS */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowModal(true);
+                }}
+                className="details-btn"
+              >
+                View Full Details
+              </button>
+            </div>
+          </div>
         )}
       </div>
-    </div>
+
+      {/* MODAL */}
+      {showModal && (
+        <EnginePackModal pack={pack} onClose={() => setShowModal(false)} />
+      )}
+    </>
   );
 }

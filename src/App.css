@@ -1,14 +1,6 @@
 /* ============================================================
    MGW / OBI V2 — COMPLETE HOLOGRAM THEME (APP.CSS OVERWRITE)
    Mobile-first, high-performance, game-style UI
-   ------------------------------------------------------------
-   Features:
-   • Neon hologram borders
-   • Animated scanline + grid overlay
-   • Mobile burger menu slide panel
-   • Smooth hover/tap pulses
-   • Global responsive system
-   • Logo watermarks & accents
    ============================================================ */
 
 /* ------------------------------------------------------------
@@ -111,20 +103,16 @@ nav {
   top: 0;
   width: 100%;
   height: var(--nav-height);
-  background: rgba(5,7,10, 0.85);
+  background: rgba(5, 7, 10, 0.85);
   backdrop-filter: blur(6px);
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 0 22px;
   border-bottom: 1px solid var(--holo-outline);
-
   z-index: 1000;
 }
 
-/* Logo */
 .nav-logo img {
   width: 44px;
   filter: drop-shadow(0 0 6px var(--holo-glow));
@@ -152,13 +140,11 @@ nav {
   position: relative;
 }
 
-/* Neon outline on hover */
 .nav-links a:hover {
   color: var(--obi-blue);
   box-shadow: 0 0 6px var(--holo-glow);
 }
 
-/* Active link hologram underline */
 .nav-links a.active::after {
   content: "";
   position: absolute;
@@ -189,7 +175,6 @@ nav {
   transition: 0.3s;
 }
 
-/* Slide-out mobile panel */
 .mobile-menu {
   position: fixed;
   top: var(--nav-height);
@@ -225,7 +210,7 @@ nav {
 }
 
 /* ------------------------------------------------------------
-   HERO SECTIONS
+   HERO
 ------------------------------------------------------------- */
 .hero-title {
   font-size: clamp(36px, 6vw, 48px);
@@ -268,7 +253,6 @@ nav {
   box-shadow: 0 0 12px var(--obi-blue);
 }
 
-/* Logo watermark */
 .section.hero::before {
   content: "";
   position: absolute;
@@ -284,7 +268,7 @@ nav {
 }
 
 /* ------------------------------------------------------------
-   FEATURE CARDS
+   FEATURE GRID
 ------------------------------------------------------------- */
 .feature-grid {
   display: grid;
@@ -309,7 +293,7 @@ nav {
 }
 
 /* ------------------------------------------------------------
-   DLC PAGE STYLING
+   DLC PAGE
 ------------------------------------------------------------- */
 .dlc-hero {
   display: flex;
@@ -404,7 +388,6 @@ footer img {
 }
 
 @media (max-width: 740px) {
-
   .nav-links {
     display: none;
   }
@@ -412,4 +395,162 @@ footer img {
   .burger {
     display: flex;
   }
+}  /* END CORRECT MEDIA QUERY */
+
+/* ============================================================
+   ENGINE PACK V3 — HOLOGRAM CARDS, ANIMATED BORDERS, CORNERS
+   ============================================================ */
+
+.holo-card {
+  position: relative;
+  transition: 0.3s;
+  border-radius: 16px;
+  border: 1px solid var(--holo-outline);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.holo-card:hover {
+  border-color: var(--obi-blue);
+  box-shadow: 0 0 18px var(--holo-glow);
+}
+
+/* Animated breathing border */
+.holo-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 4px var(--holo-glow); }
+  50% { box-shadow: 0 0 16px var(--obi-blue); }
+  100% { box-shadow: 0 0 4px var(--holo-glow); }
+}
+
+/* ------------------------------------------------------------
+   HOLOGRAM CORNER ACCENTS
+------------------------------------------------------------- */
+
+.corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--obi-blue);
+  opacity: 0.5;
+}
+
+.corner.tl { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+.corner.tr { top: 6px; right: 6px; border-left: none; border-bottom: none; }
+.corner.bl { bottom: 6px; left: 6px; border-right: none; border-top: none; }
+.corner.br { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+
+/* ------------------------------------------------------------
+   ENGINE FAMILY COLOUR THEMES
+------------------------------------------------------------- */
+
+/* Subaru EJ / FA family */
+.family-ej,
+.family-ej205,
+.family-ej207,
+.family-fa20dit,
+.family-fa20dit_wrx {
+  --engine-color: #1aa3ff;
+}
+
+.family-toyota,
+.family-toyota_2jzgte {
+  --engine-color: #ff5722;
+}
+
+.family-nissan,
+.family-nissan_rb26dett {
+  --engine-color: #b44bff;
+}
+
+.family-honda,
+.family-honda_b16a2,
+.family-honda_b18c {
+  --engine-color: #ffee58;
+}
+
+.holo-card:hover {
+  box-shadow: 0 0 18px var(--engine-color);
+}
+
+/* ------------------------------------------------------------
+   MODAL
+------------------------------------------------------------- */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-panel {
+  width: 92%;
+  max-width: 520px;
+  padding: 26px;
+  border-radius: 18px;
+  position: relative;
+  animation: modalIn 0.3s ease;
+}
+
+@keyframes modalIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-title {
+  font-size: 28px;
+  margin-bottom: 14px;
+  text-shadow: 0 0 10px var(--engine-color);
+}
+
+.modal-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+.modal-desc {
+  opacity: 0.85;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.modal-list li {
+  margin-bottom: 8px;
+  opacity: 0.85;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-buy {
+  width: 100%;
+  text-align: center;
+}
+
+.close-modal-btn {
+  padding: 10px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid var(--holo-outline);
+  border-radius: 8px;
+  color: white;
 }
