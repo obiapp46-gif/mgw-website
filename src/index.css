@@ -19,6 +19,14 @@
   box-sizing: border-box;
 }
 
+/* Prevent mobile zoom / overflow issues */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--bg-dark);
   color: var(--text-main);
@@ -131,4 +139,51 @@ nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE OVERRIDES
+   ============================================ */
+
+@media (max-width: 768px) {
+
+  .section {
+    padding: 40px 16px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+  }
+
+  .hero-buttons button {
+    margin-bottom: 10px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  .mock-img {
+    width: 70vw;
+    max-width: 260px;
+  }
+
+  nav {
+    padding: 14px 16px;
+  }
+
+  nav a {
+    margin-left: 14px;
+    font-size: 14px;
+  }
 }
