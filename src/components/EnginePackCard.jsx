@@ -55,17 +55,15 @@ export default function EnginePackCard({ pack }) {
               {/* PAID PACK */}
               {!pack.free && pack.available && (
                 <button
-                  className="buy-btn"
-                  disabled={loading}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setLoading(true);
-                    window.location.href =
-                      `/api/create-checkout?pack=${encodeURIComponent(pack.code)}`;
-                  }}
-                >
-                  {loading ? "Redirecting…" : "Buy Now"}
-                </button>
+  className="buy-btn"
+  onClick={(e) => {
+    e.stopPropagation();
+    window.location.href = `/api/checkout/${pack.code}`;
+  }}
+>
+  Buy Now
+</button>
+
               )}
 
               {/* COMING SOON */}
