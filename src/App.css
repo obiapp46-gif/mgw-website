@@ -502,3 +502,12 @@ nav {
   border-radius: 8px;
   color: white;
 }
+/* ============================================
+   HIDE DLC HERO ORB / OBI IMAGE ON MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .dlc-obi {
+    display: none !important;
+  }
+}
