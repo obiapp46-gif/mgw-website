@@ -45,44 +45,43 @@ export default function EnginePackCard({ pack }) {
             </ul>
 
             <div className="engine-pack-actions">
-              {/* FREE PACK */}
-              {pack.free && (
-                <span className="included-tag">
-                  Included in Obi Free Tier
-                </span>
-              )}
+  {!pack.free && pack.available && pack.stripeUrl && (
+    <button
+      className="buy-btn"
+      onClick={(e) => {
+        e.stopPropagation();
 
-              {/* PAID PACK */}
-              {!pack.free && pack.available && (
-                <button
-  className="buy-btn"
-onClick={(e) => {
-  e.stopPropagation();
-  window.location.href = `/api/checkout?engine=${encodeURIComponent(pack.code)}`;
-}}
+        const deviceId = localStorage.getItem("obi_device_id");
 
->
-  Buy Now
-</button>
+        const url = new URL(pack.stripeUrl, window.location.origin);
+        if (deviceId) {
+          url.searchParams.set("client_reference_id", deviceId);
+        }
 
-              )}
+        window.location.href = url.toString();
+      }}
+    >
+      Buy Now
+    </button>
+  )}
 
-              {/* COMING SOON */}
-              {!pack.available && !pack.free && (
-                <span className="coming-soon">Coming Soon</span>
-              )}
+  {/* COMING SOON */}
+  {!pack.available && !pack.free && (
+    <span className="coming-soon">Coming Soon</span>
+  )}
 
-              {/* DETAILS MODAL */}
-              <button
-                className="details-btn"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setShowModal(true);
-                }}
-              >
-                View Full Details
-              </button>
-            </div>
+  {/* DETAILS MODAL */}
+  <button
+    className="details-btn"
+    onClick={(e) => {
+      e.stopPropagation();
+      setShowModal(true);
+    }}
+  >
+    View Full Details
+  </button>
+</div>
+
           </div>
         )}
       </div>
