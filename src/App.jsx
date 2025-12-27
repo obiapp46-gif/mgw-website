@@ -11,6 +11,7 @@ import Support from "./pages/Support";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import CastScan from "./pages/CastScan";
+import FAQ from "./pages/FAQ";  
 import PartsReference from "./pages/PartsReference";
 import DLC from "./pages/DLC";
 import UpgradeSuccess from "./pages/UpgradeSuccess";
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="/support" element={<Support />} />
             <Route path="/dlc" element={<DLC />} />
             <Route path="/upgrade-success" element={<UpgradeSuccess />} />
+            <Route path="/faq" element={<FAQ />} />
 
 
             {/* ⭐ NEW UPGRADE PAGE */}
