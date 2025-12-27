@@ -4,8 +4,8 @@ import EnginePackModal from "./EnginePackModal";
 export default function EnginePackCard({ pack }) {
   const [open, setOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  // Engine family colour theme
   const familyClass = `family-${pack.code.split("_")[0]}`;
 
   return (
@@ -14,7 +14,6 @@ export default function EnginePackCard({ pack }) {
         className={`engine-pack-card holo-card clean-holo ${familyClass}`}
         onClick={() => setOpen(!open)}
       >
-
         {/* IMAGE */}
         <div className="engine-pack-image clean-image-wrap">
           <img src={pack.image} alt={pack.title} />
@@ -46,33 +45,41 @@ export default function EnginePackCard({ pack }) {
             </ul>
 
             <div className="engine-pack-actions">
+              {/* FREE PACK */}
+              {pack.free && (
+                <span className="included-tag">
+                  Included in Obi Free Tier
+                </span>
+              )}
 
-              {/* BUY / INCLUDED / COMING SOON */}
-              {pack.free ? (
-  <span className="included-tag">Included in Obi Free Tier</span>
-) : pack.available ? (
-  <button
-  className="buy-btn"
-  disabled={loading}
-  onClick={(e) => {
-    e.stopPropagation();
-    setLoading(true);
-    window.location.href = `/api/create-checkout?pack=${encodeURIComponent(pack.code)}`;
-  }}
->
-  {loading ? "Redirecting…" : "Buy Now"}
-</button>
+              {/* PAID PACK */}
+              {!pack.free && pack.available && (
+                <button
+                  className="buy-btn"
+                  disabled={loading}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLoading(true);
+                    window.location.href =
+                      `/api/create-checkout?pack=${encodeURIComponent(pack.code)}`;
+                  }}
+                >
+                  {loading ? "Redirecting…" : "Buy Now"}
+                </button>
+              )}
 
-) : (
-  <span className="coming-soon">Coming Soon</span>
-)}
+              {/* COMING SOON */}
+              {!pack.available && !pack.free && (
+                <span className="coming-soon">Coming Soon</span>
+              )}
 
+              {/* DETAILS MODAL */}
               <button
+                className="details-btn"
                 onClick={(e) => {
                   e.stopPropagation();
                   setShowModal(true);
                 }}
-                className="details-btn"
               >
                 View Full Details
               </button>
@@ -83,7 +90,10 @@ export default function EnginePackCard({ pack }) {
 
       {/* MODAL */}
       {showModal && (
-        <EnginePackModal pack={pack} onClose={() => setShowModal(false)} />
+        <EnginePackModal
+          pack={pack}
+          onClose={() => setShowModal(false)}
+        />
       )}
     </>
   );
