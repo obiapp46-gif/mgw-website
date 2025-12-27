@@ -56,10 +56,11 @@ export default function EnginePackCard({ pack }) {
               {!pack.free && pack.available && (
                 <button
   className="buy-btn"
-  onClick={(e) => {
-    e.stopPropagation();
-    window.location.href = `/api/checkout/${pack.code}`;
-  }}
+onClick={(e) => {
+  e.stopPropagation();
+  window.location.href = `/api/checkout?engine=${encodeURIComponent(pack.code)}`;
+}}
+
 >
   Buy Now
 </button>

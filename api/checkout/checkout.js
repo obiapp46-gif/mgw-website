@@ -9,10 +9,15 @@ export default async function handler(req, res) {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
     // -------------------------------
-    // Extract engine from URL manually
-    // -------------------------------
-    const url = new URL(req.url, `https://${req.headers.host}`);
-    const engine = url.pathname.split("/").pop();  // gets [engine]
+// Extract engine from query param
+// -------------------------------
+const url = new URL(req.url, `https://${req.headers.host}`);
+const engine = url.searchParams.get("engine");
+if (!engine) {
+  console.error("❌ No engine provided to checkout");
+  return res.status(400).json({ error: "Missing engine parameter" });
+}
+
 
     // -------------------------------
     // Read device_id cookie
