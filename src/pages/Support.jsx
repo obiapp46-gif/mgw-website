@@ -1,7 +1,6 @@
 export default function Support() {
   return (
     <div>
-
       <section className="section">
         <h1 className="hero-title">Support</h1>
         <p className="hero-sub">
@@ -12,29 +11,40 @@ export default function Support() {
       <section className="section">
         <div className="feature-grid">
 
-          <div className="feature-card">
+          {/* FAQ */}
+          <a href="/faq" className="feature-card" style={{ textDecoration: "none" }}>
             <h3 className="feature-title">FAQ</h3>
-            <p className="feature-desc">Common questions, troubleshooting tips and setup help.</p>
-          </div>
+            <p className="feature-desc">
+              Common questions, troubleshooting tips and setup help.
+            </p>
+          </a>
 
+          {/* EMAIL SUPPORT */}
           <a
-  href="mailto:support@mgwperformance.co.uk?subject=Obi Support Request"
-  className="feature-card"
-  style={{ textDecoration: "none" }}
->
-  <h3 className="feature-title">Email Support</h3>
-  <p className="feature-desc">support@mgwperformance.co.uk</p>
-</a>
+            href="mailto:support@mgwperformance.co.uk?subject=Obi%20Support%20Request"
+            className="feature-card"
+            style={{ textDecoration: "none" }}
+          >
+            <h3 className="feature-title">Email Support</h3>
+            <p className="feature-desc">support@mgwperformance.co.uk</p>
+          </a>
 
-
-          <div className="feature-card">
+          {/* BUG REPORTS */}
+          <a
+            href="mailto:support@mgwperformance.co.uk
+?subject=[BUG]%20Obi
+&body=Please include:%0A- Device model%0A- Obi app version%0A- Engine pack (if applicable)%0A- What happened%0A- Screenshots/logs"
+            className="feature-card"
+            style={{ textDecoration: "none" }}
+          >
             <h3 className="feature-title">Bug Reports</h3>
-            <p className="feature-desc">Found an issue? Submit logs or screenshots for quick fixes.</p>
-          </div>
+            <p className="feature-desc">
+              Found an issue? Email logs or screenshots for quick fixes.
+            </p>
+          </a>
 
         </div>
       </section>
-
     </div>
   );
 }
