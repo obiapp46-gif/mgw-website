@@ -14,10 +14,7 @@ export default function EnginePackCard({ pack }) {
         className={`engine-pack-card holo-card clean-holo ${familyClass}`}
         onClick={() => setOpen(!open)}
       >
-        {/* IMAGE */}
-        <div className="engine-pack-image clean-image-wrap">
-          <img src={pack.image} alt={pack.title} />
-        </div>
+       
 
         {/* HEADER */}
         <div className="engine-pack-header">
