@@ -1,3 +1,5 @@
+import { Cog } from "lucide-react";
+
 export default function EnginePackModal({ pack, onClose }) {
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -11,11 +13,18 @@ export default function EnginePackModal({ pack, onClose }) {
         <span className="corner bl"></span>
         <span className="corner br"></span>
 
+        {/* Title */}
         <h1 className="modal-title">{pack.title}</h1>
-        <img src={pack.image} className="modal-image" />
 
+        {/* Temporary Engine Visual (replaces image) */}
+        <div className="engine-logo-temp">
+          <Cog size={72} strokeWidth={1.5} />
+        </div>
+
+        {/* Description */}
         <p className="modal-desc">{pack.description}</p>
 
+        {/* Included List */}
         <h3>Included With This Pack</h3>
         <ul className="modal-list">
           <li>OEM torque specs</li>
@@ -26,6 +35,7 @@ export default function EnginePackModal({ pack, onClose }) {
           <li>Maintenance schedules & intervals</li>
         </ul>
 
+        {/* Actions */}
         <div className="modal-actions">
           {pack.free ? (
             <span className="included-tag">Included With Obi</span>

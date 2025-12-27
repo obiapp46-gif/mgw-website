@@ -214,3 +214,18 @@ nav a:hover {
 .hero-orb {
   display: none !important;
 }
+/* ============================================
+   ENGINE PACK TEMP ICON (MODAL)
+   ============================================ */
+
+.engine-logo-temp {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0 18px;
+}
+
+.engine-logo-temp svg {
+  color: var(--obi-blue);
+  opacity: 0.9;
+  filter: drop-shadow(0 0 14px rgba(33, 150, 243, 0.4));
+}
