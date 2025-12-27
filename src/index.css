@@ -142,28 +142,6 @@ nav a:hover {
 }
 
 /* ============================================
-   MOBILE HERO ORB FIX
-   ============================================ */
-
-@media (max-width: 768px) {
-  .hero-orb {
-    width: 220px;
-    height: 220px;
-    opacity: 0.35;
-    right: -80px;
-    top: -60px;
-    filter: blur(2px);
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-orb {
-    display: none;
-  }
-}
-
-
-/* ============================================
    MOBILE RESPONSIVE OVERRIDES
    ============================================ */
 
@@ -207,5 +185,25 @@ nav a:hover {
   nav a {
     margin-left: 14px;
     font-size: 14px;
+  }
+}
+/* ============================================
+   MOBILE HERO ORB FIX
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero-orb {
+    width: 220px;
+    height: 220px;
+    opacity: 0.35;
+    right: -80px;
+    top: -60px;
+    filter: blur(2px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-orb {
+    display: none;
   }
 }
