@@ -49,14 +49,23 @@ export default function EnginePackCard({ pack }) {
 
               {/* BUY / INCLUDED / COMING SOON */}
               {pack.free ? (
-                <span className="included-tag">Included in Obi Free Tier</span>
-              ) : pack.available ? (
-                <a href={pack.stripeUrl} className="buy-btn">
-                  Buy Now
-                </a>
-              ) : (
-                <span className="coming-soon">Coming Soon</span>
-              )}
+  <span className="included-tag">Included in Obi Free Tier</span>
+) : pack.available ? (
+  <button
+  className="buy-btn"
+  disabled={loading}
+  onClick={(e) => {
+    e.stopPropagation();
+    setLoading(true);
+    window.location.href = `/api/create-checkout?pack=${encodeURIComponent(pack.code)}`;
+  }}
+>
+  {loading ? "Redirecting…" : "Buy Now"}
+</button>
+
+) : (
+  <span className="coming-soon">Coming Soon</span>
+)}
 
               <button
                 onClick={(e) => {
