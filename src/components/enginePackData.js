@@ -26,7 +26,7 @@ export const enginePacks = [
     description:
       "Legendary JDM STI engine. Includes AVCS logic, VF turbos, learning maps, faults, and full pack.",
     image: "/images/engines/ej207.png",
-    stripeUrl: "/api/checkout/ej207",
+    stripeUrl: "https://buy.stripe.com/00w8wO9v4gIy3Qvc8pfjG01",
     available: true         // BUY NOW
   },
   {
