@@ -17,10 +17,15 @@ export default function Support() {
             <p className="feature-desc">Common questions, troubleshooting tips and setup help.</p>
           </div>
 
-          <div className="feature-card">
-            <h3 className="feature-title">Email Support</h3>
-            <p className="feature-desc">support@mgwperformance.com (coming when site is live)</p>
-          </div>
+          <a
+  href="mailto:support@mgwperformance.co.uk?subject=Obi Support Request"
+  className="feature-card"
+  style={{ textDecoration: "none" }}
+>
+  <h3 className="feature-title">Email Support</h3>
+  <p className="feature-desc">support@mgwperformance.co.uk</p>
+</a>
+
 
           <div className="feature-card">
             <h3 className="feature-title">Bug Reports</h3>
