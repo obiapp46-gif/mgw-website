@@ -6,8 +6,14 @@ export default function Features() {
         <h1 className="hero-title">Obi V1 Features</h1>
         <p className="hero-sub" style={{ maxWidth: "700px" }}>
           A focused V1 release built around real-world Subaru EJ engines,
-          delivering powerful diagnostic tools, cinematic HUD data, 
-          workshop utilities and intelligent parts lookup — all inside one app.
+          combining live vehicle data, workshop-grade utilities, and a
+          carefully constrained AI designed for accuracy — not guesswork.
+        </p>
+
+        <p className="hero-sub" style={{ maxWidth: "700px", marginTop: "12px" }}>
+          Obi only works from OEM documentation, trusted workshop manuals,
+          and verified engine-specific data. If something is unknown or
+          unsupported, Obi will say so — clearly and honestly.
         </p>
       </section>
 
@@ -17,48 +23,48 @@ export default function Features() {
           <div className="feature-card">
             <h3 className="feature-title">Live HUD</h3>
             <p className="feature-desc">
-              Real-time ECU data with clean, cinematic gauge animations 
-              and theme-adaptive visuals.
+              Real-time ECU data with clean, cinematic gauge animations
+              and theme-adaptive visuals designed for driving and diagnostics.
             </p>
           </div>
 
           <div className="feature-card">
             <h3 className="feature-title">Diagnostics AI</h3>
             <p className="feature-desc">
-              Fault codes, readiness, freeze-frame and real-time explanations
-              based on your engine parameters.
+              Interprets fault codes, readiness states, freeze-frame data,
+              and live parameters using engine-aware logic — not generic advice.
             </p>
           </div>
 
           <div className="feature-card">
             <h3 className="feature-title">Workshop Mode</h3>
             <p className="feature-desc">
-              OEM torque specs, fluids, diagrams, rebuild guidance and 
-              maintenance tasks for EJ205.
+              OEM torque specs, fluids, diagrams, rebuild guidance and
+              structured maintenance tasks for EJ205 engines.
+            </p>
+          </div>
+
+          <div className="feature-card">
+            <h3 className="feature-title">Trusted Knowledge Base</h3>
+            <p className="feature-desc">
+              Obi is deliberately limited to verified OEM data and trusted
+              workshop sources. No speculation, no hallucinations, no filler.
             </p>
           </div>
 
           <div className="feature-card">
             <h3 className="feature-title">Parts Reference</h3>
             <p className="feature-desc">
-              Search by OEM number, category or component to get fully indexed 
-              EJ205 part data.
-            </p>
-          </div>
-
-          <div className="feature-card">
-            <h3 className="feature-title">Parts Basket</h3>
-            <p className="feature-desc">
-              Build smart shopping lists with future integrations for eBay, 
-              ECP and OEM suppliers.
+              Search by OEM number, category or component to access fully
+              indexed EJ205 part data with correct naming and context.
             </p>
           </div>
 
           <div className="feature-card">
             <h3 className="feature-title">CastScan</h3>
             <p className="feature-desc">
-              Identify casting marks and block/head codes instantly 
-              for correct EJ platform identification.
+              Identify casting marks and block or head codes instantly
+              for accurate EJ platform identification.
             </p>
           </div>
 
