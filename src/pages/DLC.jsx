@@ -46,12 +46,56 @@ export default function DLC() {
         <EnginePacksPage />
       </section>
 
-      {/* FUTURE DLC SECTIONS REMAIN IN PLACE */}
+      {/* THEMES & UI PACKS */}
       <section className="dlc-section">
         <h2 className="dlc-section-title">Themes & UI Packs</h2>
-        <p className="dlc-coming-soon">Coming Soon</p>
+
+        <div className="dlc-pack-grid">
+
+          {/* Blueprint Theme Pack */}
+          <div className="dlc-pack-card">
+            <div className="dlc-pack-header">
+              <h3 className="dlc-pack-title">Blueprint Theme Pack</h3>
+              <span className="dlc-pack-tag">UI THEME</span>
+            </div>
+
+            <p className="dlc-pack-desc">
+              Transform Obi into a clean OEM workshop-manual style interface
+              with blueprint grids, technical panels, and ink-style visuals.
+            </p>
+
+            <ul className="dlc-pack-features">
+              <li>Blueprint grid & paper textures</li>
+              <li>Workshop-style panels & dividers</li>
+              <li>Blueprint HUD & chat styling</li>
+              <li>Instant toggle in Settings</li>
+              <li>Cosmetic only — no data changes</li>
+            </ul>
+
+            <div className="dlc-pack-footer">
+              <span className="dlc-pack-price">£2.49</span>
+
+              <a
+                href="https://your-stripe-link-here"
+                className="dlc-pack-button"
+              >
+                Buy Theme
+              </a>
+            </div>
+          </div>
+
+          {/* Placeholder for future themes */}
+          <div className="dlc-pack-card dlc-pack-disabled">
+            <h3 className="dlc-pack-title">More Themes Coming</h3>
+            <p className="dlc-pack-desc">
+              Additional UI and visual theme packs will be added over time.
+            </p>
+          </div>
+
+        </div>
       </section>
 
+      {/* FUTURE DLC SECTIONS REMAIN IN PLACE */}
       <section className="dlc-section">
         <h2 className="dlc-section-title">Personality Modules</h2>
         <p className="dlc-coming-soon">Coming Soon</p>
